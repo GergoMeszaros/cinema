@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('movie', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->foreignId('age_restriction_id')->nullable()->constrained('age_restriction')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('language_id')->constrained('language')->cascadeOnUpdate();
-            $table->string('cover_picture');
+            $table->string('language');
+            $table->integer('age_restriction');
+            $table->unsignedBigInteger('cover_picture_id');
             $table->timestamps();
         });
     }
