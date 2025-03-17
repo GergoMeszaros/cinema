@@ -4,20 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\File;
 
-class Picture extends Model
+class CoverPicture extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name', 'path'];
 
-    /**
-     * Generate an image with PHP GD and store it in the public folder.
-     *
-     * @param string $name
-     * @return void
-     */
     public static function generateImage(string $name, string $text = 'Sample Cover Text'): void
     {
         $directory = public_path('images');
@@ -36,5 +31,10 @@ class Picture extends Model
 
         imagepng($image, public_path($filePath));
         imagedestroy($image);
+    }
+
+    public function movie(): BelongsTo
+    {
+        return $this->belongsTo(Movie::class);
     }
 }

@@ -2,23 +2,25 @@
 
 namespace Database\Factories;
 
-use App\Models\Picture;
+use App\Models\CoverPicture;
+use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PictureFactory extends Factory
+class CoverPictureFactory extends Factory
 {
-    protected $model = Picture::class;
+    protected $model = CoverPicture::class;
 
     public function definition(): array
     {
         $name = $this->faker->word . '.png';
         $path = 'images/' . $name;
 
-        Picture::generateImage($name);
+        CoverPicture::generateImage($name);
 
         return [
             'name' => $name,
             'path' => $path,
+            'movie_id' => ''
         ];
     }
 }
