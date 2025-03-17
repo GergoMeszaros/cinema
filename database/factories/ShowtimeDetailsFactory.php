@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Movie;
+use App\Models\ShowtimeDetails;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShowtimeDetails>
- */
 class ShowtimeDetailsFactory extends Factory
 {
     /**
@@ -17,7 +16,9 @@ class ShowtimeDetailsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'showtime' => fake()->dateTimeBetween('now', '+1 day'),
+            'available_seats' => rand(1,100),
+            'movie_id' => Movie::query()->inRandomOrder()->first()
         ];
     }
 }

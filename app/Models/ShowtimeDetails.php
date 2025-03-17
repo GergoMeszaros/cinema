@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ShowtimeDetails extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'showtime',
+        'available_seats',
+        'movie_id',
+    ];
 }
