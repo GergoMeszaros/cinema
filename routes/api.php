@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/movies/{id}', [MovieController::class, 'show']);
 Route::delete('/movies/{id}', [MovieController::class, 'remove']);
+Route::patch('/movies/{id}', [MovieController::class, 'edit']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Request;
 
 class MovieController extends Controller
 {
@@ -41,5 +42,29 @@ class MovieController extends Controller
         }
         $movie->delete();
         return response()->json(['message' => 'Movie successfully deleted!']);
+    }
+
+    public function edit(Request $request, $id): JsonResponse
+    {
+        $movie = Movie::find($id);
+
+        if (!$movie) {
+            return response()->json([
+                'message' => 'Movie not found!'
+            ],
+                404
+            );
+        }
+
+        $validatedData = $request->validate([
+            'title' => 'sometimes|string|max:60',
+            'description' => 'sometimes|string|max:500',
+            'language' => 'sometimes|string|max:20',
+            'age_restriction' =>'sometimes|integer'
+        ]);
+
+        $movie->update($validatedData);
+
+        return response()->json($movie);
     }
 }
