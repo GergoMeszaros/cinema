@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Language;
 use App\Models\Movie;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
@@ -59,7 +60,7 @@ class MovieController extends Controller
         $validatedData = $request->validate([
             'title' => 'sometimes|string|max:60',
             'description' => 'sometimes|string|max:500',
-            'language' => 'sometimes|string|max:20',
+            'language' => ['sometimes','in:' . implode(',', Language::languages())],
             'age_restriction' =>'sometimes|integer'
         ]);
 
