@@ -11,14 +11,22 @@ class MovieController extends Controller
 {
     public function index(): JsonResponse
     {
-        $movies = Movie::with('coverPicture')->get();
+        $movies = Movie::with([
+                'coverPicture',
+                'showtimeDetails'
+            ]
+        )->get();
 
         return response()->json($movies);
     }
 
     public function show($id): JsonResponse
     {
-        $movie = Movie::with('coverPicture')->find($id);
+        $movie = Movie::with([
+                'coverPicture',
+                'showtimeDetails'
+            ]
+        )->find($id);
 
         if (!$movie) {
             return response()->json([
@@ -60,8 +68,8 @@ class MovieController extends Controller
         $validatedData = $request->validate([
             'title' => 'sometimes|string|max:60',
             'description' => 'sometimes|string|max:500',
-            'language' => ['sometimes','in:' . implode(',', Language::languages())],
-            'age_restriction' =>'sometimes|integer'
+            'language' => ['sometimes', 'in:' . implode(',', Language::languages())],
+            'age_restriction' => 'sometimes|integer'
         ]);
 
         $movie->update($validatedData);
