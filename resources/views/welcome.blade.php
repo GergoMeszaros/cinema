@@ -6,13 +6,10 @@
 
     <title>Laravel-React-Cinema-App</title>
     @viteReactRefresh
-    @vite(['resources/js/app.jsx'])
+    @vite(['resources/js/app.jsx', 'resources/css/app.css'])
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 </head>
-<body class="antialiased">
+<body>
 <div id="app"></div>
 </body>
 </html>
