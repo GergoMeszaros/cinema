@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index(): JsonResponse
+    public function showAll(): JsonResponse
     {
         $movies = Movie::with([
                 'coverPicture',
@@ -36,6 +36,20 @@ class MovieController extends Controller
             );
         }
         return response()->json($movie);
+    }
+
+    public function create(Request $request): JsonResponse
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:60',
+            'description' => 'required|string|max:500',
+            'language' => ['required', 'in:' . implode(',', Language::languages())],
+            'age_restriction' => 'required|integer',
+            'available_seats' => 'required|integer|max:100',
+        ]);
+
+        $movie = Movie::create($validatedData);
+        return response()->json($movie, 201);
     }
 
     public function remove($id): JsonResponse
@@ -73,7 +87,6 @@ class MovieController extends Controller
         ]);
 
         $movie->update($validatedData);
-
         return response()->json($movie);
     }
 }

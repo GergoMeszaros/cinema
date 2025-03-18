@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CoverPictureController;
 use App\Http\Controllers\MovieController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ShowtimeDetailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movies', [MovieController::class, 'showAll']);
 Route::get('/movies/{id}', [MovieController::class, 'show']);
-Route::delete('/movies/{id}', [MovieController::class, 'remove']);
+Route::post('/movies/new', [MovieController::class, 'create']);
 Route::patch('/movies/{id}', [MovieController::class, 'edit']);
+Route::delete('/movies/{id}', [MovieController::class, 'remove']);
+
+Route::delete('/showtime_details/{id}', [ShowtimeDetailsController::class, 'remove']);
+Route::patch('/showtime_details/{id}', [ShowtimeDetailsController::class, 'edit']);
+
+Route::delete('/cover_picture/{id}', [CoverPictureController::class, 'remove']);
+Route::patch('/cover_picture/{id}', [CoverPictureController::class, 'edit']);
+
+
