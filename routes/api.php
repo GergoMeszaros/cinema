@@ -22,10 +22,10 @@ Route::post('/movies/new', [MovieController::class, 'create']);
 Route::patch('/movies/{id}', [MovieController::class, 'edit']);
 Route::delete('/movies/{id}', [MovieController::class, 'remove']);
 
+Route::post('/showtime_details/new', [ShowtimeDetailsController::class, 'create']);
 Route::delete('/showtime_details/{id}', [ShowtimeDetailsController::class, 'remove']);
 Route::patch('/showtime_details/{id}', [ShowtimeDetailsController::class, 'edit']);
 
+Route::post('/cover_picture/new', [CoverPictureController::class, 'create']);
 Route::delete('/cover_picture/{id}', [CoverPictureController::class, 'remove']);
 Route::patch('/cover_picture/{id}', [CoverPictureController::class, 'edit']);
-
-
