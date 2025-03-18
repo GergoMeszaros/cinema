@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->string('description');
             $table->string('language');
             $table->integer('age_restriction');
-            $table->unsignedBigInteger('cover_picture_id');
             $table->timestamps();
         });
     }

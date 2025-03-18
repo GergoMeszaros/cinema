@@ -11,6 +11,7 @@ class CoverPicture extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at', 'updated_at', 'id', 'movie_id', 'name'];
     protected $fillable = ['name', 'path'];
 
     public static function generateImage(string $name, string $text = 'Sample Cover Text'): void
@@ -22,10 +23,10 @@ class CoverPicture extends Model
         }
 
         $image = imagecreatetruecolor(200, 200);
-        $white = imagecolorallocate($image, 255, 255, 255);
+        $blue = imagecolorallocate($image, 0, 0, 255);
         $black = imagecolorallocate($image, 0, 0, 0);
 
-        imagefilledrectangle($image, 0, 0, 199, 199, $white);
+        imagefilledrectangle($image, 0, 0, 199, 199, $blue);
         imagestring($image, 5, 50, 90, $text, $black);
         $filePath = 'images/' . $name;
 

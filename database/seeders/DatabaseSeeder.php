@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            CoverPictureSeeder::class,
             MovieSeeder::class,
+            CoverPictureSeeder::class,
             ShowtimeDetailsSeeder::class
         ]);
     }

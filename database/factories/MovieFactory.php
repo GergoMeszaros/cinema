@@ -17,7 +17,6 @@ class MovieFactory extends Factory
             'description' => fake()->text,
             'age_restriction' => array_rand(array_flip(AgeRestriction::ageRestrictions())),
             'language' => array_rand(array_flip(Language::languages())),
-            'cover_picture_id' => CoverPicture::query()->inRandomOrder()->first()->id
         ];
     }
 }

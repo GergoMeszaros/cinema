@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cover_pictures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('movie_id')->nullable();
+            $table->foreignId('movie_id')->constrained('movies')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('name');
             $table->string('path');
             $table->timestamps();

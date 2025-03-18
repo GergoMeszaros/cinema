@@ -14,13 +14,14 @@ class CoverPictureFactory extends Factory
     {
         $name = $this->faker->word . '.png';
         $path = 'images/' . $name;
+        $text = fake()->text(12);
 
-        CoverPicture::generateImage($name);
+        CoverPicture::generateImage($name, $text);
 
         return [
             'name' => $name,
             'path' => $path,
-            'movie_id' => ''
+            'movie_id' => Movie::query()->inRandomOrder()->first()
         ];
     }
 }
