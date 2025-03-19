@@ -29,7 +29,3 @@ RUN composer install --no-interaction --optimize-autoloader
 RUN chmod +x docker/php/entrypoint.sh
 
 ENTRYPOINT ["docker/php/entrypoint.sh"]
-
-#RUN npm run build
-
-#CMD ["php-fpm"]
