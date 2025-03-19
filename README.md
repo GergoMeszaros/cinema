@@ -11,11 +11,15 @@ Technologies used:
 ## Downloading and managing the project
 
     1. clone the repo: git clone git@github.com:GergoMeszaros/cinema.git
-    2. start: docker-compose up -d
-    3. run db migrations: docker-compose exec php php artisan migrate:fresh
-    4. seed the db: docker-compose exec php php artisan db:seed
+    2. run composer install
+    3. run npm install
+
+    4. start: docker-compose up -d
+    5. run db migrations: docker-compose exec php php artisan migrate:fresh
+    6. seed the db: docker-compose exec php php artisan db:seed
+    7. test: docker-compose exec php php artisan test
     
-    5. stop: docker-compose down
+    8. stop: docker-compose down
 
 ## API endpoints
 
